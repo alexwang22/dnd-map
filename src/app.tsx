@@ -1,5 +1,5 @@
 // @refresh reload
-import "./App.scss";
+import "./app.scss";
 import Body from "./components/Body";
 import Menu from "./components/Menu";
 
