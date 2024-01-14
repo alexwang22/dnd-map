@@ -1,0 +1,46 @@
+.menu {
+  padding: 1em;
+  padding-bottom: calc(var(--base-padding) - var(--scrollbar-height));
+  overflow-x: auto;
+  display: block;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 0 2px 4px gray;
+  user-select: none;
+  .label {
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: center;
+    .MuiTypography-button {
+      font-size: small;
+      color: rgb(25, 118, 210);
+    }
+  }
+  .MuiStack-root {
+    flex-shrink: 0;
+  }
+  .marker-section {
+    transition: width 2s;
+  }
+}
+.box-selector {
+  .MuiToggleButtonGroup-root {
+    display: inline-flex;
+    flex-wrap: wrap;
+    border-radius: 0px;
+    padding: 0;
+  }
+  .MuiToggleButtonGroup-groupedHorizontal {
+    &:not(:first-of-type) {
+      margin-left: 0;
+    }
+  }
+  .MuiToggleButton-root {
+    padding: 3px;
+    outline: none;
+    border: none;
+    border-radius: 0px;
+    cursor: default;
+  }
+}

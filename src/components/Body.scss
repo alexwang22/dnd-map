@@ -1,0 +1,11 @@
+.body {
+  background-color: lightgray;
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  .background {
+    position: absolute;
+    user-select: none;
+    z-index: 0;
+  }
+}

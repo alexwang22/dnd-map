@@ -1,0 +1,14 @@
+.color-selector-box {
+  background-color: transparent;
+  max-width: 224px;
+  height: fit-content;
+  padding: 4px;
+  margin: 0;
+  .color-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 1px;
+    outline: 1px solid rgb(25, 118, 210);
+    margin: 1px;
+  }
+}
