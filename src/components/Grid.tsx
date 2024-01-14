@@ -35,6 +35,10 @@ export default function Grid() {
     ];
     setDim(bottomRight);
   });
+  const resizeObserver = new ResizeObserver(() => {
+    setUpdateGrid((prev) => !prev);
+  });
+  resizeObserver.observe(body);
 
   return (
     <Show when={mapState.showGrid}>
