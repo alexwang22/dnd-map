@@ -1,13 +1,13 @@
 // @refresh reload
+import { Router } from "@solidjs/router";
+import { FileRoutes } from "@solidjs/start";
+import { Suspense } from "solid-js";
 import "./app.scss";
-import Body from "./components/Body";
-import Menu from "./components/Menu";
 
 export default function App() {
   return (
-    <main class="app">
-      <Menu />
-      <Body />
-    </main>
+    <Router root={(props) => <Suspense>{props.children}</Suspense>}>
+      <FileRoutes />
+    </Router>
   );
 }
