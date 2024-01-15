@@ -1,0 +1,4 @@
+.toggle-button-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), 1fr);
+}

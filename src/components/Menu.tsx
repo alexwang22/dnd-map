@@ -6,11 +6,10 @@ import {
   Button,
   Divider,
   InputAdornment,
-  Slide,
   Stack,
   Typography,
 } from "@suid/material";
-import { Show, createComputed, createEffect, createSignal } from "solid-js";
+import { Show, createEffect, createSignal } from "solid-js";
 import ColorSelector from "./ColorSelector";
 import IconSelector, { setIcon } from "./IconSelector";
 import { deleteMarker } from "./Marker";
@@ -143,7 +142,7 @@ export default function Menu() {
 
         {/* Section 3: Marker Settings */}
         <Stack class="marker-section">
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={1} alignItems="stretch">
             <Stack spacing={1}>
               <ShapeSelector />
               <ColorSelector />

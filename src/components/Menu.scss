@@ -4,7 +4,7 @@
   overflow-x: auto;
   display: block;
   background-color: white;
-  z-index: 10;
+  z-index: 100;
   box-shadow: 0 2px 4px gray;
   user-select: none;
   .label {
@@ -25,17 +25,6 @@
   }
 }
 .box-selector {
-  .MuiToggleButtonGroup-root {
-    display: inline-flex;
-    flex-wrap: wrap;
-    border-radius: 0px;
-    padding: 0;
-  }
-  .MuiToggleButtonGroup-groupedHorizontal {
-    &:last-of-type {
-      margin-left: -0.5px;
-    }
-  }
   .MuiToggleButton-root {
     padding: 3px;
     outline: none;

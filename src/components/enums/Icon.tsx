@@ -1,3 +1,4 @@
+import Flag from "@suid/icons-material/Flag";
 import Adjust from "@suid/icons-material/Adjust";
 import Bedtime from "@suid/icons-material/Bedtime";
 import Bolt from "@suid/icons-material/Bolt";
@@ -42,6 +43,7 @@ export enum Icon {
   STORM,
   SQUARE,
   CIRCLE,
+  FLAG,
 }
 
 export function getIcon(icon: Icon) {
@@ -88,5 +90,7 @@ export function getIcon(icon: Icon) {
       return Park;
     case Icon.STORM:
       return Storm;
+    case Icon.FLAG:
+      return Flag;
   }
 }
