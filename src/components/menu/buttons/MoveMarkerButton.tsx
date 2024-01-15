@@ -10,14 +10,14 @@ import ZoomOutMap from "@suid/icons-material/ZoomOutMap";
 import { Button, Grid, IconButton, Popover, TextField } from "@suid/material";
 import { createSignal, onMount } from "solid-js";
 import "./MoveMarkerButton.scss";
-import { mapState, setMapState } from "./State";
+import { mapState, setMapState } from "../../State";
 
 export default function MoveMarkerButton() {
   const [anchor, setAnchor] = createSignal<HTMLButtonElement | null>(null);
   const [value, setValue] = createSignal("");
   const sanitize = (str: string) => str.replace(/\D/g, "");
   const handleClick = (
-    e: MouseEvent & { currentTarget: HTMLButtonElement },
+    e: MouseEvent & { currentTarget: HTMLButtonElement }
   ) => {
     setAnchor(e.currentTarget);
     setValue("");
@@ -33,13 +33,13 @@ export default function MoveMarkerButton() {
           "markers",
           mapState.selected,
           "x",
-          (prev) => prev - px / Math.SQRT2,
+          (prev) => prev - px / Math.SQRT2
         );
         setMapState(
           "markers",
           mapState.selected,
           "y",
-          (prev) => prev - px / Math.SQRT2,
+          (prev) => prev - px / Math.SQRT2
         );
         break;
       }
@@ -52,13 +52,13 @@ export default function MoveMarkerButton() {
           "markers",
           mapState.selected,
           "x",
-          (prev) => prev + px / Math.SQRT2,
+          (prev) => prev + px / Math.SQRT2
         );
         setMapState(
           "markers",
           mapState.selected,
           "y",
-          (prev) => prev - px / Math.SQRT2,
+          (prev) => prev - px / Math.SQRT2
         );
         break;
       }
@@ -75,13 +75,13 @@ export default function MoveMarkerButton() {
           "markers",
           mapState.selected,
           "x",
-          (prev) => prev - px / Math.SQRT2,
+          (prev) => prev - px / Math.SQRT2
         );
         setMapState(
           "markers",
           mapState.selected,
           "y",
-          (prev) => prev + px / Math.SQRT2,
+          (prev) => prev + px / Math.SQRT2
         );
         break;
       }
@@ -94,13 +94,13 @@ export default function MoveMarkerButton() {
           "markers",
           mapState.selected,
           "x",
-          (prev) => prev + px / Math.SQRT2,
+          (prev) => prev + px / Math.SQRT2
         );
         setMapState(
           "markers",
           mapState.selected,
           "y",
-          (prev) => prev + px / Math.SQRT2,
+          (prev) => prev + px / Math.SQRT2
         );
         break;
       }

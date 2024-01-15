@@ -1,6 +1,6 @@
 import FileOpen from "@suid/icons-material/FileOpen";
 import { Button } from "@suid/material";
-import { setMapState } from "./State";
+import { setMapState } from "../../State";
 
 export default function LoadButton() {
   const handleLoad = () => {

@@ -1,5 +1,5 @@
 import Body from "~/components/Body";
-import Menu from "~/components/Menu";
+import Menu from "~/components/menu/Menu";
 
 import "./index.scss";
 

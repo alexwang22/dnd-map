@@ -1,6 +1,6 @@
 import Save from "@suid/icons-material/Save";
 import { Button } from "@suid/material";
-import { mapState } from "./State";
+import { mapState } from "../../State";
 
 export default function SaveButton() {
   const handleSave = () => {

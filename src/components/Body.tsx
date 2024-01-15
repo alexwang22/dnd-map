@@ -3,10 +3,11 @@ import "./Body.scss";
 import { handleDragStart } from "./Drag";
 import Grid from "./Grid";
 import Marker from "./Marker";
-import { movingBg, setMenuChange } from "./Menu";
+import { setMenuChange } from "./menu/Menu";
+import { movingBg } from "./menu/BackgroundSection";
 import { mapState, setMapState } from "./State";
-import { setShape } from "./ShapeSelector";
-import { setIcon } from "./IconSelector";
+import { setShape } from "./menu/selectors/ShapeSelector";
+import { setIcon } from "./menu/selectors/IconSelector";
 
 export let body: HTMLDivElement;
 

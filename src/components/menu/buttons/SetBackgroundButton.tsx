@@ -1,5 +1,5 @@
 import { Button } from "@suid/material";
-import { setMapState } from "./State";
+import { setMapState } from "../../State";
 import "./SetBackgroundButton.scss";
 
 export default function SetBackgroundButton() {

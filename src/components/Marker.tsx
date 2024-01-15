@@ -1,13 +1,14 @@
 import { Dynamic, Show } from "solid-js/web";
-import { color, setColor } from "./ColorSelector";
+import { color, setColor } from "./menu/selectors/ColorSelector";
 import { handleDragStart } from "./Drag";
-import { icon, setIcon } from "./IconSelector";
+import { icon, setIcon } from "./menu/selectors/IconSelector";
 import "./Marker.scss";
-import { setShape, shape } from "./ShapeSelector";
+import { setShape, shape } from "./menu/selectors/ShapeSelector";
 import { mapState, setMapState } from "./State";
 import { Icon, getIcon } from "./enums/Icon";
 import { colorToRgb, rgbToHighContrast } from "./enums/Color";
-import { movingBg, setMenuChange } from "./Menu";
+import { setMenuChange } from "./menu/Menu";
+import { movingBg } from "./menu/BackgroundSection";
 import { produce } from "solid-js/store";
 import { Stack, Typography } from "@suid/material";
 
@@ -37,7 +38,9 @@ function Marker(props: Marker.Props) {
     >
       <div
         id="marker"
-        class={`${props.shape}${props.id === mapState.selected ? " selected" : ""}`}
+        class={`${props.shape}${
+          props.id === mapState.selected ? " selected" : ""
+        }`}
         style={{
           "background-color": props.color,
           width: `${props.size - 2}px`,
@@ -94,7 +97,7 @@ export function deleteMarker(id: number) {
   setMapState(
     produce((s) => {
       delete s.markers[id];
-    }),
+    })
   );
 }
 

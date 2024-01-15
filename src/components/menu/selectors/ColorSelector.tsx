@@ -1,8 +1,8 @@
 import { Box, ToggleButton, ToggleButtonGroup } from "@suid/material";
 import { For, createSignal } from "solid-js";
 import "./ColorSelector.scss";
-import { mapState, setMapState } from "./State";
-import { Color } from "./enums/Color";
+import { mapState, setMapState } from "../../State";
+import { Color } from "../../enums/Color";
 import ToggleButtonGrid from "./ToggleButtonGrid";
 
 export const [color, setColor] = createSignal(Color.black);

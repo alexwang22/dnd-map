@@ -1,0 +1,12 @@
+.menu-section {
+  .label {
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: center;
+    .MuiTypography-button {
+      font-size: small;
+      color: rgb(25, 118, 210);
+    }
+  }
+}

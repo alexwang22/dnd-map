@@ -1,11 +1,11 @@
 import { ToggleButton, ToggleButtonGroup } from "@suid/material";
 import { For, createEffect, createSignal, onCleanup } from "solid-js";
-import { createMarker } from "./Marker";
+import { createMarker } from "../../Marker";
 import "./ShapeSelector.scss";
-import { mapState, setMapState } from "./State";
-import { Shape } from "./enums/Shape";
-import { body, inMarker } from "./Body";
-import { setMenuChange } from "./Menu";
+import { mapState, setMapState } from "../../State";
+import { Shape } from "../../enums/Shape";
+import { body, inMarker } from "../../Body";
+import { setMenuChange } from "../Menu";
 
 export const [shape, setShape] = createSignal<string | null>(null);
 
@@ -15,7 +15,7 @@ export default function ShapeSelector() {
       const bodyY = body.getBoundingClientRect().y;
       createMarker(
         e.clientX + body.scrollLeft - mapState.gridSize / 2,
-        e.clientY + body.scrollTop - bodyY - mapState.gridSize / 2,
+        e.clientY + body.scrollTop - bodyY - mapState.gridSize / 2
       );
     }
   };

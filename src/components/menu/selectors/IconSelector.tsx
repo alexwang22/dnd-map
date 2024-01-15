@@ -1,8 +1,8 @@
 import { Box, ToggleButton, ToggleButtonGroup } from "@suid/material";
 import "./IconSelector.scss";
 import { For, createSignal } from "solid-js";
-import { Icon, getIcon } from "./enums/Icon";
-import { mapState, setMapState } from "./State";
+import { Icon, getIcon } from "../../enums/Icon";
+import { mapState, setMapState } from "../../State";
 import { Dynamic } from "solid-js/web";
 import ToggleButtonGrid from "./ToggleButtonGrid";
 

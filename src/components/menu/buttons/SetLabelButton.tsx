@@ -1,13 +1,13 @@
 import Label from "@suid/icons-material/Label";
 import { Button, Popover, TextField } from "@suid/material";
-import { mapState, setMapState } from "./State";
+import { mapState, setMapState } from "../../State";
 import { createSignal, onMount } from "solid-js";
 import "./SetLabelButton.scss";
 
 export default function SetLabelButton() {
   const [anchor, setAnchor] = createSignal<HTMLButtonElement | null>(null);
   const handleClick = (
-    e: MouseEvent & { currentTarget: HTMLButtonElement },
+    e: MouseEvent & { currentTarget: HTMLButtonElement }
   ) => {
     setAnchor(e.currentTarget);
   };
