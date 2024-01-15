@@ -36,7 +36,7 @@ export default function Grid() {
     setDim(bottomRight);
   });
   const resizeObserver = new ResizeObserver(() => {
-    setUpdateGrid((prev) => !prev);
+    requestAnimationFrame(() => setUpdateGrid((prev) => !prev));
   });
   resizeObserver.observe(body);
 
@@ -69,7 +69,9 @@ export default function Grid() {
               fill="url(#smallGrid)"
             />
             <path
-              d={`M ${mapState.gridSize * 5} 0 L 0 0 0 ${mapState.gridSize * 5}`}
+              d={`M ${mapState.gridSize * 5} 0 L 0 0 0 ${
+                mapState.gridSize * 5
+              }`}
               fill="none"
               stroke="gray"
               stroke-width="1"

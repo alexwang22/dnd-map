@@ -32,8 +32,8 @@
     padding: 0;
   }
   .MuiToggleButtonGroup-groupedHorizontal {
-    &:not(:first-of-type) {
-      margin-left: 0;
+    &:last-of-type {
+      margin-left: -0.5px;
     }
   }
   .MuiToggleButton-root {
