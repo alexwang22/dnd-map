@@ -1,7 +1,7 @@
 import { Stack } from "@suid/material";
-import SaveButton from "./buttons/SaveButton";
-import LoadButton from "./buttons/LoadButton";
-import MenuSection from "./MenuSection";
+import MenuSection from "~/components/menu/MenuSection";
+import LoadButton from "~/components/menu/buttons/LoadButton";
+import SaveButton from "~/components/menu/buttons/SaveButton";
 
 export default function UtilSection() {
   return (

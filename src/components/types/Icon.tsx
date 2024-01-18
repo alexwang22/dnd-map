@@ -21,76 +21,78 @@ import Storm from "@suid/icons-material/Storm";
 import Style from "@suid/icons-material/Style";
 import Woman from "@suid/icons-material/Woman";
 
-export enum Icon {
-  STAR,
-  ELDERLY,
-  RUNCIRCLE,
-  CATCHINGPOKEMON,
-  STYLE,
-  FACE,
-  MAN,
-  WOMAN,
-  BEDTIME,
-  BOLT,
-  BRIGHTNESSHIGH,
-  CAMERA,
-  CANCEL,
-  ERROR,
-  CASINO,
-  CLOUD,
-  ADJUST,
-  PARK,
-  STORM,
-  SQUARE,
-  CIRCLE,
-  FLAG,
-}
+export const Icons = [
+  "Star",
+  "Elderly",
+  "RunCircle",
+  "CatchingPokemon",
+  "Style",
+  "Face",
+  "Man",
+  "Woman",
+  "Bedtime",
+  "Bolt",
+  "BrightnessHigh",
+  "Camera",
+  "Cancel",
+  "Error",
+  "Casino",
+  "Cloud",
+  "Adjust",
+  "Park",
+  "Storm",
+  "Square",
+  "Circle",
+  "Flag",
+] as const;
+
+export type Icon = (typeof Icons)[number];
 
 export function getIcon(icon: Icon) {
   switch (icon) {
-    case Icon.SQUARE:
+    case "Square":
       return Square;
-    case Icon.CIRCLE:
+    case "Circle":
       return Circle;
-    case Icon.STAR:
+    case "Star":
       return Star;
-    case Icon.ELDERLY:
+    case "Elderly":
       return Elderly;
-    case Icon.STYLE:
+    case "Style":
       return Style;
-    case Icon.RUNCIRCLE:
+    case "RunCircle":
       return RunCircle;
-    case Icon.ADJUST:
+    case "Adjust":
       return Adjust;
-    case Icon.BEDTIME:
+    case "Bedtime":
       return Bedtime;
-    case Icon.BOLT:
+    case "Bolt":
       return Bolt;
-    case Icon.BRIGHTNESSHIGH:
+    case "BrightnessHigh":
       return BrightnessHigh;
-    case Icon.CATCHINGPOKEMON:
+    case "CatchingPokemon":
       return CatchingPokemon;
-    case Icon.CAMERA:
+    case "Camera":
       return Camera;
-    case Icon.CANCEL:
+    case "Cancel":
       return Cancel;
-    case Icon.CASINO:
+    case "Casino":
       return Casino;
-    case Icon.CLOUD:
+    case "Cloud":
       return Cloud;
-    case Icon.ERROR:
+    case "Error":
       return Error;
-    case Icon.FACE:
+    case "Face":
       return Face;
-    case Icon.MAN:
+    case "Man":
       return Man;
-    case Icon.WOMAN:
+    case "Woman":
       return Woman;
-    case Icon.PARK:
+    case "Park":
       return Park;
-    case Icon.STORM:
+    case "Storm":
       return Storm;
-    case Icon.FLAG:
+    case "Flag":
       return Flag;
   }
 }

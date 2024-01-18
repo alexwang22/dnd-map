@@ -1,12 +1,11 @@
 import { OpenWith } from "@suid/icons-material";
 import { Button, InputAdornment, Stack } from "@suid/material";
-import { setMapState, mapState } from "../State";
-import SliderWithText from "./SliderWithText";
-import SetBackgroundButton from "./buttons/SetBackgroundButton";
-import { setIcon } from "./selectors/IconSelector";
-import { setShape } from "./selectors/ShapeSelector";
-import MenuSection from "./MenuSection";
 import { createSignal } from "solid-js";
+import { mapState, setMapState } from "~/components/State";
+import { setSelected } from "~/components/Token";
+import MenuSection from "~/components/menu/MenuSection";
+import SliderWithText from "~/components/menu/SliderWithText";
+import SetBackgroundButton from "~/components/menu/buttons/SetBackgroundButton";
 
 export const [movingBg, setMovingBg] = createSignal(false);
 
@@ -22,9 +21,7 @@ export default function BackgroundSection() {
             variant={movingBg() ? "contained" : "outlined"}
             onClick={() => {
               setMovingBg((prev) => !prev);
-              setMapState("selected", -1);
-              setShape(null);
-              setIcon(null);
+              setSelected("");
             }}
             startIcon={<OpenWith />}
           >

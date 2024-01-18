@@ -1,0 +1,25 @@
+.token-type-selector-box {
+  height: fit-content;
+  border-radius: 5px;
+  margin: 0;
+  outline: 1px solid rgb(25, 118, 210);
+  .MuiList-root {
+    padding: 0;
+    .MuiListItemButton-root {
+      padding: 4px;
+      padding-left: 0;
+      padding-right: 8px;
+      cursor: default;
+      .MuiListItemIcon-root {
+        min-width: 24px;
+      }
+      .MuiListItemText-root {
+        margin: 0;
+        .MuiTypography-root {
+          font-size: small;
+          color: rgb(25, 118, 210);
+        }
+      }
+    }
+  }
+}

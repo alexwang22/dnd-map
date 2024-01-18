@@ -1,56 +1,78 @@
 import { ToggleButton, ToggleButtonGroup } from "@suid/material";
-import { For, createEffect, createSignal, onCleanup } from "solid-js";
-import { createMarker } from "../../Marker";
+import { For, createEffect, onCleanup } from "solid-js";
+import { createStore } from "solid-js/store";
+import { body } from "~/components/Body";
+import { mapState, setMapState } from "~/components/State";
+import Token, { selected, setSelected } from "~/components/Token";
+import { movingBg } from "~/components/menu/BackgroundSection";
+import { setMenuChange } from "~/components/menu/Menu";
+import { Shape } from "~/components/types/Shape";
 import "./ShapeSelector.scss";
-import { mapState, setMapState } from "../../State";
-import { Shape } from "../../enums/Shape";
-import { body, inMarker } from "../../Body";
-import { setMenuChange } from "../Menu";
 
-export const [shape, setShape] = createSignal<string | null>(null);
+export const [shape, setShape] = createStore<{
+  [key in Token.Type]: Shape | null;
+}>({
+  character: null,
+  object: null,
+  obstacle: null,
+});
 
-export default function ShapeSelector() {
-  const create = (e: MouseEvent) => {
-    if (!inMarker(e.clientX, e.clientY)) {
-      const bodyY = body.getBoundingClientRect().y;
-      createMarker(
-        e.clientX + body.scrollLeft - mapState.gridSize / 2,
-        e.clientY + body.scrollTop - bodyY - mapState.gridSize / 2
-      );
-    }
+declare namespace ShapeSelector {
+  type Props = {
+    type: Token.Type;
+    create: (e: MouseEvent) => void;
+    shapes: readonly Shape[];
   };
+}
+
+function ShapeSelector(props: ShapeSelector.Props) {
+  createEffect(() => {
+    if (selected() === "" && shape[props.type]) {
+      body.addEventListener("mousedown", props.create);
+      onCleanup(() => body.removeEventListener("mousedown", props.create));
+    }
+  });
 
   createEffect(() => {
-    if (mapState.selected === -1 && shape()) {
-      body.addEventListener("mousedown", create);
-      onCleanup(() => body.removeEventListener("mousedown", create));
+    if (selected() !== "") {
+      requestAnimationFrame(() => {
+        const token = mapState.tokens[selected()];
+        if (token.type === props.type) {
+          setShape(props.type, token.shape);
+        } else {
+          setShape(props.type, null);
+        }
+      });
+    } else {
+      setShape(props.type, null);
     }
   });
 
   return (
     <ToggleButtonGroup
-      id="shape-selector"
-      value={shape()}
+      class="shape-selector"
+      value={shape[props.type]}
+      disabled={movingBg()}
       exclusive
       onChange={(_, newShape) => {
-        if (mapState.selected === -1) {
-          setShape(newShape);
+        if (selected() === "") {
+          setShape(props.type, newShape);
         } else {
           if (newShape) {
-            setShape(newShape);
-            setMapState("markers", mapState.selected, "shape", newShape);
+            setShape(props.type, newShape);
+            setMapState("tokens", selected(), "shape", newShape);
           } else {
-            setMapState("selected", -1);
+            setSelected("");
             setMenuChange((prev) => !prev);
           }
         }
       }}
     >
-      <For each={Object.values(Shape)}>
+      <For each={props.shapes}>
         {(shape, _) => {
           return (
             <ToggleButton value={shape}>
-              <div id="icon" class={shape} />
+              <div class={`icon ${shape}`} />
             </ToggleButton>
           );
         }}
@@ -58,3 +80,5 @@ export default function ShapeSelector() {
     </ToggleButtonGroup>
   );
 }
+
+export default ShapeSelector;

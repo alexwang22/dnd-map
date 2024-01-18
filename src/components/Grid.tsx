@@ -1,7 +1,7 @@
 import { Show, createEffect, createSignal } from "solid-js";
+import { body } from "~/components/Body";
+import { mapState } from "~/components/State";
 import "./Grid.scss";
-import { mapState } from "./State";
-import { body } from "./Body";
 
 export const [updateGrid, setUpdateGrid] = createSignal(false);
 
@@ -15,10 +15,10 @@ export default function Grid() {
       mapState.background.y +
         (mapState.background.height * mapState.background.scale) / 100,
     ];
-    for (const marker of Object.values(mapState.markers)) {
+    for (const token of Object.values(mapState.tokens)) {
       bottomRight = [
-        Math.max(marker.x + marker.size, bottomRight[0]),
-        Math.max(marker.y + marker.size, bottomRight[1]),
+        Math.max(token.x + token.width, bottomRight[0]),
+        Math.max(token.y + token.height, bottomRight[1]),
       ];
     }
     bottomRight[0] += mapState.gridSize * 2;

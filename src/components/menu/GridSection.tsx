@@ -1,8 +1,8 @@
 import { CheckBox, CheckBoxOutlineBlank } from "@suid/icons-material";
-import { Button, InputAdornment, Stack, Typography } from "@suid/material";
-import { setMapState, mapState } from "../State";
-import SliderWithText from "./SliderWithText";
-import MenuSection from "./MenuSection";
+import { Button, InputAdornment, Stack } from "@suid/material";
+import { setMapState, mapState } from "~/components/State";
+import MenuSection from "~/components/menu/MenuSection";
+import SliderWithText from "~/components/menu/SliderWithText";
 
 export default function GridSection() {
   return (
