@@ -1,5 +1,5 @@
 import { ToggleButton, ToggleButtonGroup } from "@suid/material";
-import { For, createEffect, onCleanup } from "solid-js";
+import { For, createEffect, createSignal, onCleanup } from "solid-js";
 import { createStore } from "solid-js/store";
 import { body } from "~/components/Body";
 import { mapState, setMapState } from "~/components/State";
@@ -26,6 +26,7 @@ declare namespace ShapeSelector {
 }
 
 function ShapeSelector(props: ShapeSelector.Props) {
+  const [creating, setCreating] = createSignal(false);
   createEffect(() => {
     if (selected() === "" && shape[props.type]) {
       body.addEventListener("mousedown", props.create);
@@ -44,7 +45,11 @@ function ShapeSelector(props: ShapeSelector.Props) {
         }
       });
     } else {
-      setShape(props.type, null);
+      if (creating()) {
+        onCleanup(() => setCreating(false));
+      } else {
+        setShape(props.type, null);
+      }
     }
   });
 
@@ -55,13 +60,19 @@ function ShapeSelector(props: ShapeSelector.Props) {
       disabled={movingBg()}
       exclusive
       onChange={(_, newShape) => {
-        if (selected() === "") {
+        if (
+          selected() === "" ||
+          mapState.tokens[selected()].type !== props.type
+        ) {
           setShape(props.type, newShape);
+          setCreating(true);
+          setSelected("");
         } else {
           if (newShape) {
             setShape(props.type, newShape);
             setMapState("tokens", selected(), "shape", newShape);
           } else {
+            setCreating(true);
             setSelected("");
             setMenuChange((prev) => !prev);
           }

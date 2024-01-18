@@ -3,12 +3,12 @@ import { Match, Switch, createEffect, createSignal } from "solid-js";
 import BackgroundSection from "~/components/menu/BackgroundSection";
 import CharacterSection from "~/components/menu/CharacterSection";
 import GridSection from "~/components/menu/GridSection";
+import ObjectSection from "~/components/menu/ObjectSection";
 import UtilSection from "~/components/menu/UtilSection";
-import "./Menu.scss";
 import TokenTypeSelector, {
   tokenType,
 } from "~/components/menu/selectors/TokenTypeSelector";
-import ObjectSection from "~/components/menu/ObjectSection";
+import "./Menu.scss";
 
 export const [menuChange, setMenuChange] = createSignal(false);
 
