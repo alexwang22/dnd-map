@@ -2,7 +2,7 @@ import Label from "@suid/icons-material/Label";
 import { Button, Popover, TextField } from "@suid/material";
 import { createSignal, onMount } from "solid-js";
 import { mapState, setMapState } from "~/components/State";
-import { selected } from "~/components/Token";
+import { selected } from "~/components/token/Token";
 import "./SetLabelButton.scss";
 
 export default function SetLabelButton() {

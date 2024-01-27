@@ -26,13 +26,14 @@ export const handleDragStart = (e: MouseEvent, id: string) => {
   setOrigPos(getPos());
   setOrigMousePos([e.clientX + body.scrollLeft, e.clientY + body.scrollTop]);
 };
+
 const handleDrag = (e: MouseEvent) => {
   const setPos =
     id() === "background"
       ? (x: number, y: number) => setMapState("background", { x: x, y: y })
       : (x: number, y: number) => setMapState("tokens", id(), { x: x, y: y });
-  const dx = e.clientX + body.scrollLeft - origMousePos()[0];
-  const dy = e.clientY + body.scrollTop - origMousePos()[1];
+  const dx = e.clientX + body.scrollLeft - origMousePos()[0],
+    dy = e.clientY + body.scrollTop - origMousePos()[1];
   setPos(origPos()[0] + dx, origPos()[1] + dy);
 };
 

@@ -3,7 +3,7 @@ import { For, createEffect, createSignal, onCleanup } from "solid-js";
 import { createStore } from "solid-js/store";
 import { body } from "~/components/Body";
 import { mapState, setMapState } from "~/components/State";
-import Token, { selected, setSelected } from "~/components/Token";
+import Token, { selected, setSelected } from "~/components/token/Token";
 import { movingBg } from "~/components/menu/BackgroundSection";
 import { setMenuChange } from "~/components/menu/Menu";
 import { Shape } from "~/components/types/Shape";
@@ -27,12 +27,6 @@ declare namespace ShapeSelector {
 
 function ShapeSelector(props: ShapeSelector.Props) {
   const [creating, setCreating] = createSignal(false);
-  createEffect(() => {
-    if (selected() === "" && shape[props.type]) {
-      body.addEventListener("mousedown", props.create);
-      onCleanup(() => body.removeEventListener("mousedown", props.create));
-    }
-  });
 
   createEffect(() => {
     if (selected() !== "") {
@@ -50,6 +44,23 @@ function ShapeSelector(props: ShapeSelector.Props) {
       } else {
         setShape(props.type, null);
       }
+    }
+  });
+
+  createEffect(() => {
+    if (movingBg()) {
+      setShape({
+        character: null,
+        object: null,
+        obstacle: null,
+      });
+    }
+  });
+
+  createEffect(() => {
+    if (selected() === "" && shape[props.type]) {
+      body.addEventListener("mousedown", props.create);
+      onCleanup(() => body.removeEventListener("mousedown", props.create));
     }
   });
 

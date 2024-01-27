@@ -10,7 +10,7 @@ import ZoomOutMap from "@suid/icons-material/ZoomOutMap";
 import { Button, Grid, IconButton, Popover, TextField } from "@suid/material";
 import { createSignal, onMount } from "solid-js";
 import { mapState, setMapState } from "~/components/State";
-import { selected } from "~/components/Token";
+import { selected } from "~/components/token/Token";
 import "./MoveTokenButton.scss";
 
 export default function MoveTokenButton() {

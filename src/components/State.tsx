@@ -1,5 +1,5 @@
 import { createStore } from "solid-js/store";
-import Token from "~/components/Token";
+import Token from "~/components/token/Token";
 
 export const [mapState, setMapState] = createStore({
   name: "Untitled",

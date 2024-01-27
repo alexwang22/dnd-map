@@ -1,7 +1,7 @@
 import { Box, ToggleButton } from "@suid/material";
 import { For, createEffect, createSignal } from "solid-js";
 import { mapState, setMapState } from "~/components/State";
-import { selected } from "~/components/Token";
+import { selected } from "~/components/token/Token";
 import { Color, Colors } from "~/components/types/Color";
 import ToggleButtonGrid from "~/components/menu/selectors/ToggleButtonGrid";
 import "./ColorSelector.scss";

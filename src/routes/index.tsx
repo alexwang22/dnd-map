@@ -5,7 +5,7 @@ import "./index.scss";
 
 export default function Home() {
   return (
-    <main class="home">
+    <main class="home" onContextMenu={(e) => e.preventDefault()}>
       <Menu />
       <Body />
     </main>

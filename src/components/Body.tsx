@@ -1,20 +1,18 @@
-import { Index } from "solid-js";
-import { handleDragStart } from "~/components/Drag";
+import { For } from "solid-js";
+import { handleDragStart } from "~/components/utils/Drag";
 import Grid from "~/components/Grid";
 import { mapState } from "~/components/State";
-import Token, { selected, setSelected } from "~/components/Token";
+import Token, { selected, setSelected } from "~/components/token/Token";
 import { movingBg } from "~/components/menu/BackgroundSection";
 import { setMenuChange } from "~/components/menu/Menu";
-import { setIcon } from "~/components/menu/selectors/IconSelector";
-import { setShape } from "~/components/menu/selectors/ShapeSelector";
 import "./Body.scss";
+import SizeIndicator from "~/components/SizeIndicator";
 
 export let body: HTMLDivElement;
 
 export default function Body() {
   const handleMouseDown = (e: MouseEvent) => {
     if (selected() !== "" && !inToken(e.clientX, e.clientY)) {
-      setShape(mapState.tokens[selected()].type, null);
       setSelected("");
       setMenuChange((prev) => !prev);
     }
@@ -42,11 +40,12 @@ export default function Body() {
           top: `${mapState.background.y}px`,
         }}
       />
-      <Index each={Object.values(mapState.tokens)}>
+      <For each={Object.values(mapState.tokens)}>
         {(token, _) => {
-          return <Token {...token()} />;
+          return <Token {...token} />;
         }}
-      </Index>
+      </For>
+      <SizeIndicator />
     </div>
   );
 }

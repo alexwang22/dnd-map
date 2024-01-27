@@ -9,7 +9,7 @@ import {
 } from "@suid/material";
 import { For, Show, createEffect, createSignal } from "solid-js";
 import { mapState } from "~/components/State";
-import Token, { selected } from "~/components/Token";
+import Token, { selected } from "~/components/token/Token";
 import "./TokenTypeSelector.scss";
 import { setMenuChange } from "~/components/menu/Menu";
 
@@ -31,7 +31,7 @@ export default function TokenTypeSelector() {
       </Typography>
       <Box class="token-type-selector-box">
         <List>
-          <For each={["character", "object", "obstacle"] as Token.Type[]}>
+          <For each={Token.Types}>
             {(type, _) => {
               return (
                 <ListItemButton

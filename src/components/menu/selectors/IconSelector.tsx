@@ -2,7 +2,7 @@ import { Box, ToggleButton, Typography } from "@suid/material";
 import { For, createEffect, createSignal } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { mapState, setMapState } from "~/components/State";
-import { selected } from "~/components/Token";
+import { selected } from "~/components/token/Token";
 import { Icon, Icons, getIcon } from "~/components/types/Icon";
 import ToggleButtonGrid from "~/components/menu/selectors/ToggleButtonGrid";
 import "./IconSelector.scss";

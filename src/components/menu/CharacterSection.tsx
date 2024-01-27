@@ -2,7 +2,7 @@ import { InputAdornment, Stack } from "@suid/material";
 import { Show } from "solid-js";
 import { body, inToken } from "~/components/Body";
 import { mapState, setMapState } from "~/components/State";
-import { createToken, selected } from "~/components/Token";
+import { createToken, selected } from "~/components/token/Token";
 import MenuSection from "~/components/menu/MenuSection";
 import SliderWithText from "~/components/menu/SliderWithText";
 import DeleteTokenButton from "~/components/menu/buttons/DeleteTokenButton";
@@ -27,7 +27,7 @@ export default function CharacterSection() {
         "character",
         shape.character!,
         color(),
-        icon()
+        { icon: icon() }
       );
     }
   };

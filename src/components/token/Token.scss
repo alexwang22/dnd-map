@@ -1,11 +1,19 @@
 .token-stack {
   position: absolute;
   user-select: none;
-  z-index: 10;
+  &.obstacle {
+    z-index: 5;
+  }
+  &.object {
+    z-index: 7;
+  }
+  &.character {
+    z-index: 10;
+  }
   &.selected {
     z-index: 11;
   }
-  #token {
+  .token {
     border: 1px solid black;
     display: flex;
     justify-content: stretch;

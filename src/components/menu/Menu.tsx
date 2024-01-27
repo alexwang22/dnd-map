@@ -4,6 +4,7 @@ import BackgroundSection from "~/components/menu/BackgroundSection";
 import CharacterSection from "~/components/menu/CharacterSection";
 import GridSection from "~/components/menu/GridSection";
 import ObjectSection from "~/components/menu/ObjectSection";
+import ObstacleSection from "~/components/menu/ObstacleSection";
 import UtilSection from "~/components/menu/UtilSection";
 import TokenTypeSelector, {
   tokenType,
@@ -49,6 +50,9 @@ export default function Menu() {
           </Match>
           <Match when={tokenType() === "object"}>
             <ObjectSection />
+          </Match>
+          <Match when={tokenType() === "obstacle"}>
+            <ObstacleSection />
           </Match>
         </Switch>
         <Divider orientation="vertical" flexItem />
