@@ -9,18 +9,19 @@ import {
 } from "@suid/material";
 import { For, Show, createEffect, createSignal } from "solid-js";
 import { mapState } from "~/components/State";
+import { setMenuChange } from "~/components/menu/Menu";
 import Token, { selected } from "~/components/token/Token";
 import "./TokenTypeSelector.scss";
-import { setMenuChange } from "~/components/menu/Menu";
 
 export const [tokenType, setTokenType] = createSignal<Token.Type>("character");
 
 export default function TokenTypeSelector() {
   createEffect(() => {
     if (selected() !== "") {
-      requestAnimationFrame(() =>
-        setTokenType(mapState.tokens[selected()].type)
-      );
+      requestAnimationFrame(() => {
+        setTokenType(mapState.tokens[selected()].type);
+        setMenuChange((prev) => !prev);
+      });
     }
   });
 
@@ -37,8 +38,8 @@ export default function TokenTypeSelector() {
                 <ListItemButton
                   selected={tokenType() === type}
                   onClick={() => {
-                    setMenuChange((prev) => !prev);
                     setTokenType(type);
+                    setMenuChange((prev) => !prev);
                   }}
                 >
                   <Show when={tokenType() === type}>

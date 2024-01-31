@@ -3,9 +3,9 @@ import { For, createEffect, createSignal, onCleanup } from "solid-js";
 import { createStore } from "solid-js/store";
 import { body } from "~/components/Body";
 import { mapState, setMapState } from "~/components/State";
-import Token, { selected, setSelected } from "~/components/token/Token";
 import { movingBg } from "~/components/menu/BackgroundSection";
 import { setMenuChange } from "~/components/menu/Menu";
+import Token, { selected, setSelected } from "~/components/token/Token";
 import { Shape } from "~/components/types/Shape";
 import "./ShapeSelector.scss";
 

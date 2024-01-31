@@ -2,7 +2,6 @@ import { InputAdornment, Stack } from "@suid/material";
 import { Show } from "solid-js";
 import { body, inToken } from "~/components/Body";
 import { mapState, setMapState } from "~/components/State";
-import { createToken, selected } from "~/components/token/Token";
 import MenuSection from "~/components/menu/MenuSection";
 import SliderWithText from "~/components/menu/SliderWithText";
 import DeleteTokenButton from "~/components/menu/buttons/DeleteTokenButton";
@@ -14,6 +13,7 @@ import ColorSelector, {
 import ShapeSelector, {
   shape,
 } from "~/components/menu/selectors/ShapeSelector";
+import { createToken, selected } from "~/components/token/Token";
 import { ObjectShapes } from "~/components/types/Shape";
 
 export default function ObjectSection() {

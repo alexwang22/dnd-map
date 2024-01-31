@@ -1,3 +1,4 @@
+import c from "class-c";
 import { Match, Show, Switch } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { movingBg } from "~/components/menu/BackgroundSection";
@@ -22,8 +23,9 @@ export default function TokenCenter(props: Token.Props) {
     <Switch>
       <Match when={props.type === "character"}>
         <div
-          classList={{ selected: props.id === selected() }}
-          class={`token ${props.shape}`}
+          class={c`token ${props.shape} ${{
+            selected: props.id === selected(),
+          }}`}
           style={{
             "background-color": props.color,
             width: `${props.width - 2}px`,
@@ -51,8 +53,9 @@ export default function TokenCenter(props: Token.Props) {
       </Match>
       <Match when={props.type === "object"}>
         <div
-          classList={{ selected: props.id === selected() }}
-          class={`token ${props.shape}`}
+          class={c`token ${props.shape} ${{
+            selected: props.id === selected(),
+          }}`}
           style={{
             "background-color": props.color,
             width: `${props.width - 2}px`,
@@ -68,8 +71,9 @@ export default function TokenCenter(props: Token.Props) {
       </Match>
       <Match when={props.type === "obstacle"}>
         <div
-          classList={{ selected: props.id === selected() }}
-          class={`token ${props.shape}`}
+          class={c`token ${props.shape} ${{
+            selected: props.id === selected(),
+          }}`}
           style={{
             "background-color": props.color,
             width: `${props.width - 2}px`,

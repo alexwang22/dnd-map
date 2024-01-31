@@ -1,4 +1,5 @@
 import { Stack } from "@suid/material";
+import c from "class-c";
 import { createSignal } from "solid-js";
 import { produce } from "solid-js/store";
 import { mapState, setMapState } from "~/components/State";
@@ -29,8 +30,13 @@ export const [selected, setSelected] = createSignal("");
 function Token(props: Token.Props) {
   return (
     <Stack
-      classList={{ selected: props.id === selected() }}
-      class={`token-stack ${props.type}`}
+      class={`${c`
+        token-stack 
+        ${props.type} 
+        ${{
+          selected: props.id === selected(),
+        }}
+      `}`}
       direction="row"
       spacing={1}
       style={{

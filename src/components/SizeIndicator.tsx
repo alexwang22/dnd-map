@@ -2,10 +2,10 @@ import { Typography } from "@suid/material";
 import { Show, createEffect, createSignal, onCleanup } from "solid-js";
 import { createStore } from "solid-js/store";
 import { body } from "~/components/Body";
-import { createToken } from "~/components/token/Token";
 import { setStartMouse, startMouse } from "~/components/menu/ObstacleSection";
 import { color } from "~/components/menu/selectors/ColorSelector";
 import { shape } from "~/components/menu/selectors/ShapeSelector";
+import { createToken } from "~/components/token/Token";
 import "./SizeIndicator.scss";
 
 export default function SizeIndicator() {
@@ -88,7 +88,7 @@ export default function SizeIndicator() {
         >
           <Typography variant="body1">
             {`${Math.abs(mouse()[0] - startMouse()![0])} x
-          ${Math.abs(mouse()[1] - startMouse()![1])}`}
+              ${Math.abs(mouse()[1] - startMouse()![1])}`}
           </Typography>
         </div>
       </div>

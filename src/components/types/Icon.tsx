@@ -1,4 +1,3 @@
-import Flag from "@suid/icons-material/Flag";
 import Adjust from "@suid/icons-material/Adjust";
 import Bedtime from "@suid/icons-material/Bedtime";
 import Bolt from "@suid/icons-material/Bolt";
@@ -12,6 +11,7 @@ import Cloud from "@suid/icons-material/Cloud";
 import Elderly from "@suid/icons-material/Elderly";
 import Error from "@suid/icons-material/Error";
 import Face from "@suid/icons-material/Face";
+import Flag from "@suid/icons-material/Flag";
 import Man from "@suid/icons-material/Man";
 import Park from "@suid/icons-material/Park";
 import RunCircle from "@suid/icons-material/RunCircle";

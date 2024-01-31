@@ -1,7 +1,7 @@
 import { Delete } from "@suid/icons-material";
 import { Button } from "@suid/material";
-import { deleteToken, selected, setSelected } from "~/components/token/Token";
 import { setMenuChange } from "~/components/menu/Menu";
+import { deleteToken, selected, setSelected } from "~/components/token/Token";
 
 export default function DeleteTokenButton() {
   return (

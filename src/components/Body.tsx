@@ -1,12 +1,12 @@
 import { For } from "solid-js";
-import { handleDragStart } from "~/components/utils/Drag";
 import Grid from "~/components/Grid";
+import SizeIndicator from "~/components/SizeIndicator";
 import { mapState } from "~/components/State";
-import Token, { selected, setSelected } from "~/components/token/Token";
 import { movingBg } from "~/components/menu/BackgroundSection";
 import { setMenuChange } from "~/components/menu/Menu";
+import Token, { selected, setSelected } from "~/components/token/Token";
+import { handleDragStart } from "~/components/utils/Drag";
 import "./Body.scss";
-import SizeIndicator from "~/components/SizeIndicator";
 
 export let body: HTMLDivElement;
 
@@ -19,12 +19,7 @@ export default function Body() {
   };
 
   return (
-    <div
-      class="body"
-      id="body"
-      ref={body}
-      onMouseDown={(e) => handleMouseDown(e)}
-    >
+    <div class="body" id="body" ref={body} onMouseDown={handleMouseDown}>
       <Grid />
       <img
         class="background"
@@ -56,12 +51,10 @@ export const inToken = (mouseX: number, mouseY: number) => {
   const bodyY = body.getBoundingClientRect().y;
   for (const token of Object.values(mapState.tokens)) {
     if (
-      !(
-        mouseX < token.x ||
-        mouseY < token.y + bodyY ||
-        mouseX > token.x + token.width ||
-        mouseY > token.y + bodyY + token.height
-      )
+      mouseX >= token.x &&
+      mouseY >= token.y + bodyY &&
+      mouseX <= token.x + token.width &&
+      mouseY <= token.y + bodyY + token.height
     ) {
       return true;
     }

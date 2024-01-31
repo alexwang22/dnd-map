@@ -1,15 +1,15 @@
 import { Stack } from "@suid/material";
 import { Show, createSignal } from "solid-js";
 import { body, inToken } from "~/components/Body";
-import { selected } from "~/components/token/Token";
 import MenuSection from "~/components/menu/MenuSection";
+import ObstacleDimensions from "~/components/menu/ObstacleDimensions";
 import DeleteTokenButton from "~/components/menu/buttons/DeleteTokenButton";
 import MoveTokenButton from "~/components/menu/buttons/MoveTokenButton";
 import SetLabelButton from "~/components/menu/buttons/SetLabelButton";
 import ColorSelector from "~/components/menu/selectors/ColorSelector";
 import ShapeSelector from "~/components/menu/selectors/ShapeSelector";
+import { selected } from "~/components/token/Token";
 import { ObstacleShapes } from "~/components/types/Shape";
-import ObstacleWidthHeight from "~/components/menu/ObstacleWidthHeight";
 
 export const [startMouse, setStartMouse] = createSignal<number[] | null>(null);
 
@@ -46,7 +46,7 @@ export default function ObstacleSection() {
               <SetLabelButton />
               <DeleteTokenButton />
             </Stack>
-            <ObstacleWidthHeight />
+            <ObstacleDimensions />
             <MoveTokenButton />
           </Stack>
         </Show>
