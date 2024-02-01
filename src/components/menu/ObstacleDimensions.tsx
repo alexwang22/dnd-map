@@ -12,21 +12,31 @@ export default function ObstacleDimensions() {
   const sanitize = (str: string) => str.replace(/\D/g, "");
 
   createComputed(() => {
-    if (mapState.tokens[selected()] !== undefined)
+    if (mapState.tokens[selected()] !== undefined) {
       setWidth(`${mapState.tokens[selected()].width}`);
+    }
   });
 
   createComputed(() => {
-    if (mapState.tokens[selected()] !== undefined)
+    if (mapState.tokens[selected()] !== undefined) {
       setHeight(`${mapState.tokens[selected()].height}`);
+    }
   });
 
   createComputed(() => {
-    if (validWidth()) setMapState("tokens", selected(), "width", +width());
+    if (validWidth()) {
+      requestAnimationFrame(() =>
+        setMapState("tokens", selected(), "width", +width())
+      );
+    }
   });
 
   createComputed(() => {
-    if (validHeight()) setMapState("tokens", selected(), "height", +height());
+    if (validHeight()) {
+      requestAnimationFrame(() =>
+        setMapState("tokens", selected(), "height", +height())
+      );
+    }
   });
 
   return (

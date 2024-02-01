@@ -30,7 +30,7 @@ function SliderWithText(props_: SliderWithText.Props) {
 
   createComputed(() => {
     if (valid()) {
-      props.setValue(+value());
+      requestAnimationFrame(() => props.setValue(+value()));
     }
   });
 
