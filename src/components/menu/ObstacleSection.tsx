@@ -1,6 +1,9 @@
-import { Stack } from "@suid/material";
-import { Show, createSignal } from "solid-js";
+import CheckBox from "@suid/icons-material/CheckBox";
+import CheckBoxOutlineBlank from "@suid/icons-material/CheckBoxOutlineBlank";
+import { Button, Stack } from "@suid/material";
+import { Show, createEffect, createSignal } from "solid-js";
 import { body, inToken } from "~/components/Body";
+import { mapState, setMapState } from "~/components/State";
 import MenuSection from "~/components/menu/MenuSection";
 import ObstacleDimensions from "~/components/menu/ObstacleDimensions";
 import DeleteTokenButton from "~/components/menu/buttons/DeleteTokenButton";
@@ -22,6 +25,16 @@ export default function ObstacleSection() {
       ]);
     }
   };
+
+  const [movable, setMovable] = createSignal(true);
+  createEffect(() => {
+    setMovable(
+      mapState.tokens[selected()] === undefined ||
+        mapState.tokens[selected()].obstacleProps === undefined
+        ? true
+        : mapState.tokens[selected()].obstacleProps!.movable
+    );
+  });
 
   return (
     <MenuSection
@@ -47,7 +60,25 @@ export default function ObstacleSection() {
               <DeleteTokenButton />
             </Stack>
             <ObstacleDimensions />
-            <MoveTokenButton />
+            <Stack direction="row" spacing={1}>
+              <Button
+                variant="text"
+                size="small"
+                onClick={() =>
+                  setMapState(
+                    "tokens",
+                    selected(),
+                    "obstacleProps",
+                    "movable",
+                    (prev) => !prev
+                  )
+                }
+                startIcon={movable() ? <CheckBox /> : <CheckBoxOutlineBlank />}
+              >
+                Movable
+              </Button>
+              <MoveTokenButton disabled={!movable()} />
+            </Stack>
           </Stack>
         </Show>
       </Stack>

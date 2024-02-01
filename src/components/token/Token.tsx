@@ -22,6 +22,11 @@ declare namespace Token {
     width: number;
     height: number;
     label: string;
+    obstacleProps?: ObstacleProps;
+  };
+
+  type ObstacleProps = {
+    movable: boolean;
   };
 }
 
@@ -67,6 +72,7 @@ export function createToken(
     width = mapState.gridSize,
     height = mapState.gridSize,
     label = "",
+    obstacleProps = undefined as Token.ObstacleProps | undefined,
   } = {}
 ) {
   const id = `${type}-${mapState.nextId[type]}`;
@@ -88,6 +94,7 @@ export function createToken(
     width: width,
     height: height,
     label: label,
+    obstacleProps: obstacleProps,
   });
   setMapState("nextId", type, (id) => ++id);
 }

@@ -13,7 +13,13 @@ import { mapState, setMapState } from "~/components/State";
 import { selected } from "~/components/token/Token";
 import "./MoveTokenButton.scss";
 
-export default function MoveTokenButton() {
+declare namespace MoveTokenButton {
+  type Props = {
+    disabled?: boolean;
+  };
+}
+
+function MoveTokenButton(props: MoveTokenButton.Props) {
   const [anchor, setAnchor] = createSignal<HTMLButtonElement | null>(null);
   const [value, setValue] = createSignal("");
   const sanitize = (str: string) => str.replace(/\D/g, "");
@@ -113,6 +119,7 @@ export default function MoveTokenButton() {
       <Button
         variant="text"
         size="small"
+        disabled={props.disabled}
         onClick={handleClick}
         startIcon={<ZoomOutMap />}
       >
@@ -199,3 +206,5 @@ export default function MoveTokenButton() {
     </div>
   );
 }
+
+export default MoveTokenButton;

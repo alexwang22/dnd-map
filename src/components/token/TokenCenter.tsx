@@ -14,7 +14,9 @@ export default function TokenCenter(props: Token.Props) {
     if (!movingBg()) {
       setSelected(props.id);
       setMenuChange((prev) => !prev);
-      handleDragStart(e, props.id);
+      if (props.type !== "obstacle" || props.obstacleProps!.movable) {
+        handleDragStart(e, props.id);
+      }
       e.stopPropagation();
     }
   };
