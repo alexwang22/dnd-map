@@ -1,9 +1,20 @@
-.marker-stack {
+.token-stack {
   position: absolute;
   user-select: none;
-  #marker {
-    border: 1px solid black;
+  &.obstacle {
+    z-index: 5;
+  }
+  &.object {
+    z-index: 7;
+  }
+  &.character {
     z-index: 10;
+  }
+  &.selected {
+    z-index: 11;
+  }
+  .token {
+    border: 1px solid black;
     display: flex;
     justify-content: stretch;
     justify-items: center;
@@ -13,7 +24,6 @@
     }
     &.selected {
       outline: 2px solid rgb(110, 200, 250);
-      z-index: 11;
     }
     .icon {
       flex: 1;
@@ -22,6 +32,5 @@
   .label {
     display: flex;
     align-items: flex-end;
-    z-index: 10;
   }
 }

@@ -1,17 +1,24 @@
-import { Box, ToggleButton, ToggleButtonGroup } from "@suid/material";
-import { For, createSignal } from "solid-js";
+import { Box, ToggleButton } from "@suid/material";
+import { For, createEffect, createSignal } from "solid-js";
+import { mapState, setMapState } from "~/components/State";
+import { selected } from "~/components/token/Token";
+import { Color, Colors } from "~/components/types/Color";
+import ToggleButtonGrid from "~/components/menu/selectors/ToggleButtonGrid";
 import "./ColorSelector.scss";
-import { mapState, setMapState } from "../../State";
-import { Color } from "../../enums/Color";
-import ToggleButtonGrid from "./ToggleButtonGrid";
 
-export const [color, setColor] = createSignal(Color.black);
+export const [color, setColor] = createSignal<Color>("black");
 
 export default function ColorSelector() {
+  createEffect(() => {
+    if (selected() !== "") {
+      requestAnimationFrame(() => setColor(mapState.tokens[selected()].color));
+    }
+  });
+
   return (
     <Box class="color-selector-box box-selector">
       <ToggleButtonGrid columnCount={8}>
-        <For each={Object.values(Color)}>
+        <For each={Colors}>
           {(_color, _) => {
             return (
               <ToggleButton
@@ -20,13 +27,8 @@ export default function ColorSelector() {
                 onClick={(_, newColor) => {
                   if (newColor) {
                     setColor(newColor);
-                    if (mapState.selected !== -1) {
-                      setMapState(
-                        "markers",
-                        mapState.selected,
-                        "color",
-                        newColor
-                      );
+                    if (selected() !== "") {
+                      setMapState("tokens", selected(), "color", newColor);
                     }
                   }
                 }}

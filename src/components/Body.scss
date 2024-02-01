@@ -3,9 +3,9 @@
   flex: 1;
   overflow: auto;
   position: relative;
+  user-select: none;
   .background {
     position: absolute;
-    user-select: none;
     z-index: 0;
   }
 }

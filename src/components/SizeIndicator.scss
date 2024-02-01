@@ -1,0 +1,12 @@
+.size-indicator {
+  z-index: 20;
+  .dashed-box {
+    position: absolute;
+    border: 1px dashed black;
+  }
+  .numbers {
+    position: absolute;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+}

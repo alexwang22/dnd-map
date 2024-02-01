@@ -1,6 +1,6 @@
+import { Stack, Typography } from "@suid/material";
 import { JSX, Show } from "solid-js";
 import "./MenuSection.scss";
-import { Stack, Typography } from "@suid/material";
 
 declare namespace MenuSection {
   type Props = {

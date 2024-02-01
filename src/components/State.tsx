@@ -1,5 +1,5 @@
 import { createStore } from "solid-js/store";
-import Marker from "./Marker";
+import Token from "~/components/token/Token";
 
 export const [mapState, setMapState] = createStore({
   name: "Untitled",
@@ -14,9 +14,12 @@ export const [mapState, setMapState] = createStore({
   gridSize: 32,
   showGrid: true,
   snapToGrid: false,
-  nextId: 1,
-  markers: {} as Record<number, Marker.Props>,
-  selected: -1,
-  listOrder: [] as number[],
+  nextId: {
+    character: 1,
+    object: 1,
+    obstacle: 1,
+  },
+  tokens: {} as Record<string, Token.Props>,
+  initiativeOrder: [] as string[],
   presentMode: false,
 });

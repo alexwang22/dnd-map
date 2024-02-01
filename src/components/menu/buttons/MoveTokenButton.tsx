@@ -9,10 +9,17 @@ import West from "@suid/icons-material/West";
 import ZoomOutMap from "@suid/icons-material/ZoomOutMap";
 import { Button, Grid, IconButton, Popover, TextField } from "@suid/material";
 import { createSignal, onMount } from "solid-js";
-import "./MoveMarkerButton.scss";
-import { mapState, setMapState } from "../../State";
+import { mapState, setMapState } from "~/components/State";
+import { selected } from "~/components/token/Token";
+import "./MoveTokenButton.scss";
 
-export default function MoveMarkerButton() {
+declare namespace MoveTokenButton {
+  type Props = {
+    disabled?: boolean;
+  };
+}
+
+function MoveTokenButton(props: MoveTokenButton.Props) {
   const [anchor, setAnchor] = createSignal<HTMLButtonElement | null>(null);
   const [value, setValue] = createSignal("");
   const sanitize = (str: string) => str.replace(/\D/g, "");
@@ -30,75 +37,75 @@ export default function MoveMarkerButton() {
     switch (dir) {
       case "nw": {
         setMapState(
-          "markers",
-          mapState.selected,
+          "tokens",
+          selected(),
           "x",
           (prev) => prev - px / Math.SQRT2
         );
         setMapState(
-          "markers",
-          mapState.selected,
+          "tokens",
+          selected(),
           "y",
           (prev) => prev - px / Math.SQRT2
         );
         break;
       }
       case "n": {
-        setMapState("markers", mapState.selected, "y", (prev) => prev - px);
+        setMapState("tokens", selected(), "y", (prev) => prev - px);
         break;
       }
       case "ne": {
         setMapState(
-          "markers",
-          mapState.selected,
+          "tokens",
+          selected(),
           "x",
           (prev) => prev + px / Math.SQRT2
         );
         setMapState(
-          "markers",
-          mapState.selected,
+          "tokens",
+          selected(),
           "y",
           (prev) => prev - px / Math.SQRT2
         );
         break;
       }
       case "w": {
-        setMapState("markers", mapState.selected, "x", (prev) => prev - px);
+        setMapState("tokens", selected(), "x", (prev) => prev - px);
         break;
       }
       case "e": {
-        setMapState("markers", mapState.selected, "x", (prev) => prev + px);
+        setMapState("tokens", selected(), "x", (prev) => prev + px);
         break;
       }
       case "sw": {
         setMapState(
-          "markers",
-          mapState.selected,
+          "tokens",
+          selected(),
           "x",
           (prev) => prev - px / Math.SQRT2
         );
         setMapState(
-          "markers",
-          mapState.selected,
+          "tokens",
+          selected(),
           "y",
           (prev) => prev + px / Math.SQRT2
         );
         break;
       }
       case "s": {
-        setMapState("markers", mapState.selected, "y", (prev) => prev + px);
+        setMapState("tokens", selected(), "y", (prev) => prev + px);
         break;
       }
       case "se": {
         setMapState(
-          "markers",
-          mapState.selected,
+          "tokens",
+          selected(),
           "x",
           (prev) => prev + px / Math.SQRT2
         );
         setMapState(
-          "markers",
-          mapState.selected,
+          "tokens",
+          selected(),
           "y",
           (prev) => prev + px / Math.SQRT2
         );
@@ -112,6 +119,7 @@ export default function MoveMarkerButton() {
       <Button
         variant="text"
         size="small"
+        disabled={props.disabled}
         onClick={handleClick}
         startIcon={<ZoomOutMap />}
       >
@@ -198,3 +206,5 @@ export default function MoveMarkerButton() {
     </div>
   );
 }
+
+export default MoveTokenButton;

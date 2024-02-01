@@ -4,6 +4,9 @@
     flex: 1;
     align-items: flex-end;
     justify-content: center;
+    &.menu-item {
+      align-items: center;
+    }
     .MuiTypography-button {
       font-size: small;
       color: rgb(25, 118, 210);

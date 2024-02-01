@@ -1,7 +1,8 @@
 import Label from "@suid/icons-material/Label";
 import { Button, Popover, TextField } from "@suid/material";
-import { mapState, setMapState } from "../../State";
 import { createSignal, onMount } from "solid-js";
+import { mapState, setMapState } from "~/components/State";
+import { selected } from "~/components/token/Token";
 import "./SetLabelButton.scss";
 
 export default function SetLabelButton() {
@@ -52,9 +53,9 @@ export default function SetLabelButton() {
               size="small"
               label="Label"
               ref={ref!}
-              value={mapState.markers[mapState.selected].label}
+              value={mapState.tokens[selected()].label}
               onChange={(_, newLabel) =>
-                setMapState("markers", mapState.selected, "label", newLabel)
+                setMapState("tokens", selected(), "label", newLabel)
               }
             />
           );

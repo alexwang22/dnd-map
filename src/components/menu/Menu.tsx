@@ -1,10 +1,15 @@
 import { Divider, Stack } from "@suid/material";
-import { createEffect, createSignal } from "solid-js";
+import { Match, Switch, createEffect, createSignal } from "solid-js";
+import BackgroundSection from "~/components/menu/BackgroundSection";
+import CharacterSection from "~/components/menu/CharacterSection";
+import GridSection from "~/components/menu/GridSection";
+import ObjectSection from "~/components/menu/ObjectSection";
+import ObstacleSection from "~/components/menu/ObstacleSection";
+import UtilSection from "~/components/menu/UtilSection";
+import TokenTypeSelector, {
+  tokenType,
+} from "~/components/menu/selectors/TokenTypeSelector";
 import "./Menu.scss";
-import UtilSection from "./UtilSection";
-import BackgroundSection from "./BackgroundSection";
-import GridSection from "./GridSection";
-import MarkerSection from "./MarkerSection";
 
 export const [menuChange, setMenuChange] = createSignal(false);
 
@@ -31,17 +36,26 @@ export default function Menu() {
         "--base-padding": `${basePadding()}px`,
       }}
     >
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={1}
-      >
+      <Stack direction="row" spacing={1}>
         <UtilSection />
+        <Divider orientation="vertical" flexItem />
         <BackgroundSection />
+        <Divider orientation="vertical" flexItem />
         <GridSection />
-        <MarkerSection />
-
-        <div />
+        <Divider orientation="vertical" flexItem />
+        <TokenTypeSelector />
+        <Switch>
+          <Match when={tokenType() === "character"}>
+            <CharacterSection />
+          </Match>
+          <Match when={tokenType() === "object"}>
+            <ObjectSection />
+          </Match>
+          <Match when={tokenType() === "obstacle"}>
+            <ObstacleSection />
+          </Match>
+        </Switch>
+        <Divider orientation="vertical" flexItem />
       </Stack>
     </div>
   );
