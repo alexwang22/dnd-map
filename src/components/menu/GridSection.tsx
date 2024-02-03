@@ -19,7 +19,6 @@ export default function GridSection() {
             Show Grid
           </Button>
           <Button
-            disabled
             variant="text"
             onClick={() => setMapState("snapToGrid", (prev) => !prev)}
             startIcon={

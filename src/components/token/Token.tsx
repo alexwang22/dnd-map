@@ -45,8 +45,8 @@ function Token(props: Token.Props) {
       direction="row"
       spacing={1}
       style={{
-        left: `${props.x}px`,
-        top: `${props.y}px`,
+        left: `${props.x + 1}px`,
+        top: `${props.y + 1}px`,
       }}
     >
       <TokenCenter {...props} />

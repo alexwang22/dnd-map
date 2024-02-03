@@ -18,12 +18,12 @@ createEffect(() => {
 });
 
 export const handleDragStart = (e: MouseEvent, id: string) => {
-  const getPos =
+  const pos =
     id === "background"
-      ? () => [mapState.background.x, mapState.background.y]
-      : () => [mapState.tokens[id].x, mapState.tokens[id].y];
+      ? [mapState.background.x, mapState.background.y]
+      : [mapState.tokens[id].x, mapState.tokens[id].y];
   setId(id);
-  setOrigPos(getPos());
+  setOrigPos(pos);
   setOrigMousePos([e.clientX + body.scrollLeft, e.clientY + body.scrollTop]);
 };
 
@@ -34,7 +34,14 @@ const handleDrag = (e: MouseEvent) => {
       : (x: number, y: number) => setMapState("tokens", id(), { x: x, y: y });
   const dx = e.clientX + body.scrollLeft - origMousePos()[0],
     dy = e.clientY + body.scrollTop - origMousePos()[1];
-  setPos(origPos()[0] + dx, origPos()[1] + dy);
+  let pos = [origPos()[0] + dx, origPos()[1] + dy];
+  if (mapState.snapToGrid) {
+    pos = [
+      Math.round(pos[0] / mapState.gridSize) * mapState.gridSize,
+      Math.round(pos[1] / mapState.gridSize) * mapState.gridSize,
+    ];
+  }
+  setPos(pos[0], pos[1]);
 };
 
 const handleDragEnd = () => setId("");
