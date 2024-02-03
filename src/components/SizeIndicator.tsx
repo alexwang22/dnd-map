@@ -2,6 +2,7 @@ import { Typography } from "@suid/material";
 import { Show, createEffect, createSignal, onCleanup } from "solid-js";
 import { createStore } from "solid-js/store";
 import { body } from "~/components/Body";
+import { mapState } from "~/components/State";
 import { setStartMouse, startMouse } from "~/components/menu/ObstacleSection";
 import { color } from "~/components/menu/selectors/ColorSelector";
 import { shape } from "~/components/menu/selectors/ShapeSelector";
@@ -14,21 +15,60 @@ export default function SizeIndicator() {
   const [pos, setPos] = createStore<number[]>([0, 0]);
 
   const handleMouseMove = (e: MouseEvent) => {
-    const mouseX = e.clientX + body.scrollLeft,
-      mouseY = e.clientY + body.scrollTop - body.getBoundingClientRect().y;
+    const mousePos = [
+      e.clientX + body.scrollLeft,
+      e.clientY + body.scrollTop - body.getBoundingClientRect().y,
+    ];
 
-    setMouse([mouseX, mouseY]);
-
-    if (mouseX < startMouse()![0]) {
-      setPos(0, mouseX);
+    if (mousePos[0] < startMouse()![0]) {
+      if (mapState.snapToGrid) {
+        if (startMouse()![0] - mousePos[0] < mapState.gridSize) {
+          mousePos[0] =
+            Math.floor(mousePos[0] / mapState.gridSize) * mapState.gridSize;
+        } else {
+          mousePos[0] =
+            Math.round(mousePos[0] / mapState.gridSize) * mapState.gridSize;
+        }
+      }
+      setPos(0, mousePos[0]);
     } else {
+      if (mapState.snapToGrid) {
+        if (mousePos[0] - startMouse()![0] < mapState.gridSize) {
+          mousePos[0] =
+            Math.ceil(mousePos[0] / mapState.gridSize) * mapState.gridSize;
+        } else {
+          mousePos[0] =
+            Math.round(mousePos[0] / mapState.gridSize) * mapState.gridSize;
+        }
+      }
       setPos(0, startMouse()![0]);
     }
-    if (mouseY < startMouse()![1]) {
-      setPos(1, mouseY);
+
+    if (mousePos[1] < startMouse()![1]) {
+      if (mapState.snapToGrid) {
+        if (startMouse()![1] - mousePos[1] < mapState.gridSize) {
+          mousePos[1] =
+            Math.floor(mousePos[1] / mapState.gridSize) * mapState.gridSize;
+        } else {
+          mousePos[1] =
+            Math.round(mousePos[1] / mapState.gridSize) * mapState.gridSize;
+        }
+      }
+      setPos(1, mousePos[1]);
     } else {
+      if (mapState.snapToGrid) {
+        if (mousePos[1] - startMouse()![1] < mapState.gridSize) {
+          mousePos[1] =
+            Math.ceil(mousePos[1] / mapState.gridSize) * mapState.gridSize;
+        } else {
+          mousePos[1] =
+            Math.round(mousePos[1] / mapState.gridSize) * mapState.gridSize;
+        }
+      }
       setPos(1, startMouse()![1]);
     }
+
+    setMouse(mousePos);
   };
 
   const handleMouseUp = () => {

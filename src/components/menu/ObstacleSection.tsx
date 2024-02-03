@@ -19,10 +19,17 @@ export const [startMouse, setStartMouse] = createSignal<number[] | null>(null);
 export default function ObstacleSection() {
   const createObstacle = (e: MouseEvent) => {
     if (!inToken(e.clientX, e.clientY)) {
-      setStartMouse([
+      let mousePos = [
         e.clientX + body.scrollLeft,
         e.clientY + body.scrollTop - body.getBoundingClientRect().y,
-      ]);
+      ];
+      if (mapState.snapToGrid) {
+        mousePos = [
+          Math.round(mousePos[0] / mapState.gridSize) * mapState.gridSize,
+          Math.round(mousePos[1] / mapState.gridSize) * mapState.gridSize,
+        ];
+      }
+      setStartMouse(mousePos);
     }
   };
 

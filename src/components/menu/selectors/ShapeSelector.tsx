@@ -32,7 +32,7 @@ function ShapeSelector(props: ShapeSelector.Props) {
     if (selected() !== "") {
       requestAnimationFrame(() => {
         const token = mapState.tokens[selected()];
-        if (token.type === props.type) {
+        if (token !== undefined && token.type === props.type) {
           setShape(props.type, token.shape);
         } else {
           setShape(props.type, null);
