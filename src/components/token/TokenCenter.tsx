@@ -84,6 +84,9 @@ export default function TokenCenter(props: Token.Props) {
               Math.max(Math.min(props.width, props.height) * 0.1, 2),
               8
             )}px`,
+            "border-color": `${
+              props.obstacleProps!.border ? "black" : props.color
+            }`,
           }}
           draggable={false}
           onMouseDown={handleMouseDown}

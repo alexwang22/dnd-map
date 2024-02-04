@@ -12,7 +12,7 @@ export const Colors = [
   "gray",
   "brown",
   "maroon",
-  "beige",
+  "white",
   "lime",
   "aquamarine",
   "aqua",

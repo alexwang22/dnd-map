@@ -79,7 +79,7 @@ export default function SizeIndicator() {
     createToken(pos[0], pos[1], "obstacle", shape.obstacle!, color(), {
       width: width,
       height: height,
-      obstacleProps: { movable: true },
+      obstacleProps: { movable: true, border: true },
     });
   };
 

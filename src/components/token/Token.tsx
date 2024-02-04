@@ -27,6 +27,7 @@ declare namespace Token {
 
   type ObstacleProps = {
     movable: boolean;
+    border: boolean;
   };
 }
 

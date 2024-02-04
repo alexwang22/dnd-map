@@ -11,7 +11,7 @@ import MoveTokenButton from "~/components/menu/buttons/MoveTokenButton";
 import SetLabelButton from "~/components/menu/buttons/SetLabelButton";
 import ColorSelector from "~/components/menu/selectors/ColorSelector";
 import ShapeSelector from "~/components/menu/selectors/ShapeSelector";
-import { selected } from "~/components/token/Token";
+import Token, { selected } from "~/components/token/Token";
 import { ObstacleShapes } from "~/components/types/Shape";
 
 export const [startMouse, setStartMouse] = createSignal<number[] | null>(null);
@@ -33,13 +33,19 @@ export default function ObstacleSection() {
     }
   };
 
-  const [movable, setMovable] = createSignal(true);
+  const [obstacleProps, setObstacleProps] = createSignal<Token.ObstacleProps>({
+    movable: true,
+    border: false,
+  });
   createEffect(() => {
-    setMovable(
+    setObstacleProps(
       mapState.tokens[selected()] === undefined ||
         mapState.tokens[selected()].obstacleProps === undefined
-        ? true
-        : mapState.tokens[selected()].obstacleProps!.movable
+        ? { movable: true, border: false }
+        : {
+            movable: mapState.tokens[selected()].obstacleProps!.movable,
+            border: mapState.tokens[selected()].obstacleProps!.border,
+          }
     );
   });
 
@@ -63,6 +69,28 @@ export default function ObstacleSection() {
         <Show when={selected().startsWith("obstacle")}>
           <Stack spacing={0}>
             <Stack direction="row" spacing={1}>
+              <Button
+                variant="text"
+                size="small"
+                onClick={() =>
+                  setMapState(
+                    "tokens",
+                    selected(),
+                    "obstacleProps",
+                    "border",
+                    (prev) => !prev
+                  )
+                }
+                startIcon={
+                  obstacleProps().border ? (
+                    <CheckBox />
+                  ) : (
+                    <CheckBoxOutlineBlank />
+                  )
+                }
+              >
+                Border
+              </Button>
               <SetLabelButton />
               <DeleteTokenButton />
             </Stack>
@@ -80,11 +108,17 @@ export default function ObstacleSection() {
                     (prev) => !prev
                   )
                 }
-                startIcon={movable() ? <CheckBox /> : <CheckBoxOutlineBlank />}
+                startIcon={
+                  obstacleProps().movable ? (
+                    <CheckBox />
+                  ) : (
+                    <CheckBoxOutlineBlank />
+                  )
+                }
               >
                 Movable
               </Button>
-              <MoveTokenButton disabled={!movable()} />
+              <MoveTokenButton disabled={!obstacleProps()} />
             </Stack>
           </Stack>
         </Show>
