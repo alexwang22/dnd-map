@@ -118,7 +118,7 @@ export default function ObstacleSection() {
               >
                 Movable
               </Button>
-              <MoveTokenButton disabled={!obstacleProps()} />
+              <MoveTokenButton disabled={!obstacleProps().movable} />
             </Stack>
           </Stack>
         </Show>
