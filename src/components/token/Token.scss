@@ -2,7 +2,7 @@
   position: absolute;
   user-select: none;
   &.obstacle {
-    z-index: 11;
+    z-index: 5;
   }
   &.object {
     z-index: 7;
@@ -11,7 +11,7 @@
     z-index: 10;
   }
   &.selected {
-    z-index: 12;
+    z-index: 11;
   }
   .token {
     border: 1px solid black;
