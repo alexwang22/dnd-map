@@ -10,7 +10,7 @@ export const Colors = [
   "indigo",
   "purple",
   "gray",
-  "brown",
+  "pink",
   "maroon",
   "white",
   "lime",
