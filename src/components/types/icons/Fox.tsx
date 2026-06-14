@@ -15,8 +15,6 @@ export const Fox = createSvgIcon(
       xml:space="preserve"
     >
       <path
-        fill="#000000"
-        opacity="1.000000"
         stroke="none"
         d="
 M370.364777,281.851196 
@@ -43,8 +41,6 @@ M130.845871,298.584900
 z"
       />
       <path
-        fill="#000000"
-        opacity="1.000000"
         stroke="none"
         d="
 M226.086212,315.051392 
@@ -70,8 +66,6 @@ M226.086212,315.051392
 z"
       />
       <path
-        fill="#000000"
-        opacity="1.000000"
         stroke="none"
         d="
 M209.264755,97.950798 
@@ -112,8 +106,6 @@ M210.284546,131.585327
 z"
       />
       <path
-        fill="#000000"
-        opacity="1.000000"
         stroke="none"
         d="
 M250.436707,66.295555 
