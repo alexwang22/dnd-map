@@ -20,6 +20,7 @@ import Star from "@suid/icons-material/Star";
 import Storm from "@suid/icons-material/Storm";
 import Style from "@suid/icons-material/Style";
 import Woman from "@suid/icons-material/Woman";
+import { Fox } from "~/components/types/icons/Fox";
 import { Handprint } from "~/components/types/icons/Handprint";
 
 export const Icons = [
@@ -46,6 +47,7 @@ export const Icons = [
   "Circle",
   "Flag",
   "Handprint",
+  "Fox",
 ] as const;
 
 export type Icon = (typeof Icons)[number];
@@ -98,5 +100,7 @@ export function getIcon(icon: Icon) {
       return Flag;
     case "Handprint":
       return Handprint;
+    case "Fox":
+      return Fox;
   }
 }
